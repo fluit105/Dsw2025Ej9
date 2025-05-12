@@ -79,6 +79,22 @@ internal class Ejemplos
 
     public static void BodegaGenerica()
     {
-        throw new NotImplementedException();
+        // 1) Crear diferentes bodegas genéricas con tipos específicos
+        var bodegaAlimentos = new Generica<Alimento>("Bodega de Alimentos");
+        var bodegaHerramientas = new Generica<Herramienta>("Bodega de Herramientas");
+
+        // 2) Agregar elementos de cada tipo
+        bodegaAlimentos.Agregar(new Alimento("Manzana"));
+        bodegaAlimentos.Agregar(new Alimento("Plátano"));
+        bodegaHerramientas.Agregar(new Herramienta("Martillo"));
+        bodegaHerramientas.Agregar(new Herramienta("Destornillador"));
+
+        // 3) Listar el contenido de las bodegas
+        Console.WriteLine("\nRecorriendo Bodega de Alimentos:");
+        bodegaAlimentos.MostrarContenido();
+
+        Console.WriteLine("\nRecorriendo Bodega de Herramientas:");
+        bodegaHerramientas.MostrarContenido();
     }
+
 }

@@ -37,9 +37,4 @@ public class Generica<T> where T : IMercancia
             Console.WriteLine($"- {item.Nombre}");
         }
     }
-
-    public string Describir()
-    {
-        throw new NotImplementedException();
-    }
 }
