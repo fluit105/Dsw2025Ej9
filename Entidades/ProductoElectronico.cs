@@ -1,6 +1,6 @@
 ﻿namespace Dsw2025Ej9.Entidades;
 
-public class ProductoElectronico
+public class ProductoElectronico : IMercancia
 {
     public string Nombre { get; }
     public string Marca { get; }

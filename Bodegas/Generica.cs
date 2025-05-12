@@ -1,22 +1,45 @@
-﻿namespace Dsw2025Ej9.Bodegas;
+﻿using Dsw2025Ej9.Entidades;
+using System.Collections;
 
-/*
-     * ¡Se decidió construir una bodega por cada tipo!
-     * Después de hartarse de añadir BodegaAlimentos, BodegaHerramientas,
-     * BodegaElectronica, los marineros descubrieron que podían tener
-     * una única bodega que funcione con cualquier mercancía.
-     *
-     * TU MISIÓN:
-     * 1) Crear una clase genérica, con los métodos que debería tener una bodega
-     
-     * 2) Completar el método EjemploBodegasGenericas (en la clase Ejemplos):
-     *      – Instanciar diferentes bodegas, para cada tipo de mercancía.
-     *      – Agregar al menos dos elementos de cada tipo.
-     *      – Listar y mostrar por consola el contenido de cada bodega.
-     *      
-     * 3) Asegurar que la nueva bodega genérica solo acepte mercancías
-     *
-     */
-public class Generica
+namespace Dsw2025Ej9.Bodegas;
+
+public class Generica<T> where T : IMercancia
 {
+    private readonly List<T> _items = new List<T>();
+    private readonly string _nombre;
+
+    public Generica(string nombre)
+    {
+        _nombre = nombre;
+    }
+
+    public string Nombre => _nombre;
+
+    public void Agregar(T item)
+    {
+        _items.Add(item);
+    }
+
+    public T Obtener(int index)
+    {
+        if (_items.Count == 0 || index >= _items.Count)
+            throw new Exception("No hay elementos en la bodega");
+        return _items[index]!;
+    }
+
+    public List<T> Listar() => _items;
+
+    public void MostrarContenido()
+    {
+        Console.WriteLine($"Contenido de la bodega '{Nombre}':");
+        foreach (var item in _items)
+        {
+            Console.WriteLine($"- {item.Nombre}");
+        }
+    }
+
+    public string Describir()
+    {
+        throw new NotImplementedException();
+    }
 }
